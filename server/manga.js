@@ -2,8 +2,9 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
-const { Mutex } = require("async-mutex");
+const ebookConverter =  require('node-ebook-converter');
 var images = [];
+var mangaFolder = "";
 
 async function geraMangaLivre(pag, url, nomePasta) {
   const browser = await puppeteer.launch();
@@ -28,12 +29,16 @@ async function geraMangaLivre(pag, url, nomePasta) {
   // seleciona a imagem dentro da div
   const imageElements = await page.$(`${divSelector} ${imgSelector}`);
   const screenshotBuffer = await imageElements.screenshot();
-  const userImageFolderPath = path.join(require('os').homedir(), 'Pictures', nomePasta);
+  const userImageFolderPath = path.join(
+    require("os").homedir(),
+    "Pictures",
+    nomePasta
+  );
+  mangaFolder = userImageFolderPath;
   fs.mkdir(userImageFolderPath, { recursive: true }, (err) => {
     if (err) {
       throw err;
     }
-    console.log('Pasta criada com sucesso!');
   });
   fs.writeFile(
     `${userImageFolderPath}/image-${images.length + 1}.png`,
@@ -62,7 +67,40 @@ async function numeroDePaginas(url) {
   return text;
 }
 
-async function BaixarImagens(url,nomePasta) {
+async function geraPdf() {
+  const doc = new PDFDocument({
+    margin: 0, // Sem margens
+    margins: 0,
+  });
+  images.forEach((image, index) => {
+    // Pega o caminho completo da imagem
+    const imagePath = path.join(mangaFolder, image);
+
+    // Adiciona uma nova página ao documento PDF
+    if (index > 0) {
+      doc.addPage();
+    }
+    console.log(doc.page.width);
+    // Adiciona a imagem à página atual
+    doc.image(imagePath, {
+      fit: [doc.page.width, doc.page.height],
+      size: [1448, 1072], // Tamanho da página
+      align: "center", // Alinhamento horizontal
+      valign: "center", // Alinhamento vertical
+    });
+  });
+  doc.pipe(fs.createWriteStream(`${mangaFolder}/imagens.pdf`));
+  doc.end();
+
+  ebookConverter.convert({
+    input: `${mangaFolder}/imagens.pdf`,
+    output: `${mangaFolder}/imagens.epub`,
+    authors: "Probably a bear...",
+    delete: true
+  })
+}
+
+async function BaixarImagens(url, nomePasta) {
   let numero = await numeroDePaginas(url);
   console.log("numero paginas: " + numero);
   for (let x = 2; x < numero; x++) {
