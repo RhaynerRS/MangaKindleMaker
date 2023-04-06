@@ -27,7 +27,8 @@ body {
   max-height: 30vh;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 40vw;
+  width: 45vw;
+  margin-right: 5vw;
   padding-inline: 15px;
 }
 #buttons {

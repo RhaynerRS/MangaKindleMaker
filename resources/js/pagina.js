@@ -2,14 +2,22 @@ function adicionarCampo() {
   var formulario = document.getElementById("formManga");
 
   var formGroup = document.createElement("div");
-  formGroup.className = "form-group mb-3";
+  formGroup.className = "form-group mb-3 ";
+  formGroup.id = `comp-${Math.floor(Math.random() * (99999 - 10000) + 10000)}`
+  formGroup.style = "display:flex;justify-content: center; align-items:center;";
+  var excluirCapitulo = document.createElement("i");
+  excluirCapitulo.className = "btn fa-solid fa-xmark text-danger cursor-pointer";
+  excluirCapitulo.addEventListener("click",() => {
+    let pai = document.getElementById("formManga");
+    let elemento = document.getElementById(formGroup.id);
+    pai.removeChild(elemento)
+  })
   var novoCapitulo = document.createElement("input");
   novoCapitulo.classList.add("form-control");
   novoCapitulo.type = "text";
   novoCapitulo.name = "manga";
   novoCapitulo.placeholder = "Insira o link do capitulo";
-  formGroup.appendChild(novoCapitulo);
-
+  formGroup.appendChild(excluirCapitulo);
   formGroup.appendChild(novoCapitulo);
 
   formulario.appendChild(formGroup);
