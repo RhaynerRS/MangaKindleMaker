@@ -7,7 +7,7 @@ function adicionarCampo() {
   formGroup.style = "display:flex;justify-content: center; align-items:center;";
   var excluirCapitulo = document.createElement("i");
   excluirCapitulo.className = "btn fa-solid fa-xmark text-danger cursor-pointer";
-  excluirCapitulo.addEventListener("click",() => {
+  excluirCapitulo.addEventListener("click", () => {
     let pai = document.getElementById("formManga");
     let elemento = document.getElementById(formGroup.id);
     pai.removeChild(elemento)
@@ -23,59 +23,68 @@ function adicionarCampo() {
   formulario.appendChild(formGroup);
 }
 
-function criarManga() {
-  console.log(document.getElementById("testando"))
+async function criarManga() {
+
   var inps = document.getElementsByName('manga');
   var urls = [];
-  var nomePastaManga = ''
-  inps.forEach((input)=>{
+  inps.forEach((input) => {
     urls.push(input.value)
   })
-  const body = {urls: urls}
-  Swal.fire({
-    title: "Qual o nome do arquivo?",
-    input: "text",
-    inputAttributes: {
-      autocapitalize: "off",
-    },
-    icon: "info",
-    customClass: {
-      confirmButton: "btn btn-success",
-    },
-    confirmButtonText: "Ok",
-  }).then((nomePasta)=>{
-    $('#staticBackdrop').modal('show');
-    return fetch("http://localhost:3000",{
-      method:"POST",
+  document.getElementById("enviar").disabled = true;
+  try {
+    await fetch("http://localhost:3000", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({urls: urls, nomePasta: nomePasta.value})
-    }).then(()=>{
-      $('#staticBackdrop').modal('hide');
-      Swal.fire({
-        icon: "success",
-        title: "Tudo certo!",
-        text: "Seu mangá foi salvo com sucesso",
-        confirmButtonText: "ótimo",
-      })
+      body: JSON.stringify({ urls: urls, nomePasta: document.getElementById("nomeManga")?.value ?? null, cover: document.getElementById("mangaCover")?.value ?? null, autor: document.getElementById("mangaAutor")?.value ?? null })
+    }).then((res) => {
+      document.getElementById("enviar").disabled = false;
+      if (res.status == 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Tudo certo!",
+          text: "Seu mangá foi salvo com sucesso",
+          confirmButtonText: "ótimo",
+        })
+      }
     })
-  });
+  } catch {
+    document.getElementById("enviar").disabled = false;
+  }
 }
-var checkbox = document.getElementById('testando')
+
+var capManga = document.getElementById('testando')
+var autorManga = document.getElementById('autor')
 
 function AdicionarCapaManga(checked) {
-  let capa = document.getElementById('capaManga');
-  if(checked)
-    capa.innerHTML=`<div class="form-group mb-3">
-    <input type="file" class="form-control" name="manga" id="exampleInputEmail1" aria-describedby="emailHelp"
-      placeholder="Insira o link do capitulo">
+  let capa = document.getElementById('autorManga');
+  if (checked)
+    capa.innerHTML = `<div class="form-group mb-3">
+    <input type="text" class="form-control" name="autor" id="mangaCover" aria-describedby="emailHelp"
+      placeholder="Insira o link da capa">
   </div>`;
   else
-    capa.innerHTML=null;
+    capa.innerHTML = null;
 }
 
-checkbox.addEventListener('change', function () {
+function AdicionarAutorManga(checked) {
+  let capa = document.getElementById('capaManga');
+  if (checked)
+    capa.innerHTML = `<div class="form-group mb-3">
+    <input type="text" class="form-control" name="cover" id="mangaAutor" aria-describedby="emailHelp"
+      placeholder="Insira o nome do autor">
+  </div>`;
+  else
+    capa.innerHTML = null;
+}
+
+
+capManga.addEventListener('change', function () {
   AdicionarCapaManga(this.checked)
+})
+
+autorManga.addEventListener('change', function () {
+  AdicionarAutorManga(this.checked)
 })
 

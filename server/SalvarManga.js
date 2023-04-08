@@ -1,12 +1,14 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
+const ComprimeImagens = require('./ComprimeImagens.js')
 var images = [];
 
 async function geraMangaLivre(url, nomePasta, numero) {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto(`${url}/0#/!page0`);
+
   for (let i = 0; i < numero; i++) {
     setTimeout(() => { }, 5000);
 
@@ -24,30 +26,30 @@ async function geraMangaLivre(url, nomePasta, numero) {
     await page.waitForSelector(divSelector);
     await page.waitForSelector(`${divSelector} ${imgSelector}`);
 
-    let screenshotBuffer ;
+    let screenshotBuffer;
     let userImageFolderPath;
 
     // seleciona a imagem dentro da div
     await page.waitForSelector(`${divSelector} ${imgSelector}`, { visible: true, timeout: 10000 })
-  .then(async () => {
-    const data = await page.$(`${divSelector} ${imgSelector}`);
-    if (data) {
-      const boundingBox = await data.boundingBox();
-      if (boundingBox && boundingBox.width > 0) {
-        screenshotBuffer = await data.screenshot();
-        userImageFolderPath = path.join(
-          require("os").homedir(),
-          "Pictures",
-          nomePasta
-        );
-      }
-    }
-  })
-  .catch((err) => {
-    console.log(`Error: ${err}`);
-  });
+      .then(async () => {
+        const data = await page.$(`${divSelector} ${imgSelector}`);
+        if (data) {
+          const boundingBox = await data.boundingBox();
+          if (boundingBox && boundingBox.width > 0) {
+            screenshotBuffer = await data.screenshot();
+            userImageFolderPath = path.join(
+              require("os").homedir(),
+              "Pictures",
+              nomePasta
+            );
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      });
 
-    
+
     mangaFolder = userImageFolderPath;
     fs.mkdir(userImageFolderPath, { recursive: true }, (err) => {
       if (err) {
@@ -65,12 +67,12 @@ async function geraMangaLivre(url, nomePasta, numero) {
         }
       }
     );
+    ComprimeImagens(userImageFolderPath, `${images.length + 1}.png`)
 
     const form = await page.$('div.page-next');
     await form.evaluate(form => form.click());
   }
 
-  console.log(`Image ${images.length + 1} saved.`);
   await browser.close();
 }
 
@@ -87,10 +89,15 @@ async function numeroDePaginas(url) {
 
 async function BaixarImagens(url, nomePasta) {
   let numero = await numeroDePaginas(url);
-  console.log("numero paginas: " + numero);
   await geraMangaLivre(url, nomePasta, numero);
-  console.log(images);
   return images;
 }
 
-module.exports = BaixarImagens;
+function ResetaImagens() {
+  images = [];
+}
+
+module.exports = {
+  BaixarImagens: BaixarImagens,
+  ResetaImagens: ResetaImagens
+}
