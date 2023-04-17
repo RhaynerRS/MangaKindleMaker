@@ -59,7 +59,7 @@ async function GeraEpub(totalImages,titulo, autor, diretorio, urlCover) {
 
   // Gerar o arquivo EPUB
   const options = {
-    title: titulo,
+    title: titulo.replace("-"," "),
     author: autor,
     publisher: "panini",
     language: "pt-br",

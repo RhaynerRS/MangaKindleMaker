@@ -12,3 +12,5 @@ async function ComprimeImagens(pathImages, imagem){
 }
 
 module.exports = ComprimeImagens;
+
+// ComprimeImagens("C:/Users/rhayn/Pictures/blue-lock-vl8", "14.png")

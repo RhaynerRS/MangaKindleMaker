@@ -10,59 +10,59 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="css/style.css">
   <script src="
 https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
 "></script>
-<script src="https://kit.fontawesome.com/82464d366f.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/82464d366f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <div id="faixaAzul"></div>
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
-    <div class="modal-dialog d-flex justify-content-center align-items-center" style="height: calc(100vh - 3.5rem)">
-      <div class="modal-content">
-        <div class="modal-body d-flex align-items-center justify-content-center flex-column">
-          <h2 class="title font-weight-bolder ">Estamos montando seu mangá...</h2>
-
-          <div class="spinner-grow text-primary mb-3" role="status">
-            <span class="sr-only">Loading...</span>
+  <div class="container justify-content-center align-items-center d-flex" style="width: 100%;height: 100%;">
+    <div class="signup-content">
+      <div class="signup-form">
+        <h2 class="form-title">Enhance your mangá</h2>
+        <form method="POST" class="register-form" id="register-form">
+          <div class="form-group">
+            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+            <input type="text" name="name" id="name" placeholder="Nome do mangá" />
           </div>
-        </div>
+          <div class="form-group justify-content-between d-flex">
+            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+            <input type="password" name="pass" id="pass" placeholder="Cap. Inicial" style="width: 48%;">
+            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+            <input type="password" name="pass" id="pass" placeholder="Cap. Final" style="width: 48%;">
+          </div>
+          <div class="form-group">
+            <label for="email"><i class="zmdi zmdi-email"></i></label>
+            <input type="email" name="email" id="email" placeholder="Autor" />
+          </div>
+          <div class="form-group">
+            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+            <input type="password" name="re_pass" id="re_pass" placeholder="Capa do mangá" />
+          </div>
+          <div class="form-group">
+            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+            <input type="password" name="re_pass" id="re_pass" placeholder="Nome da pasta" />
+          </div>
+          <div class="form-group form-button">
+            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+          </div>
+        </form>
+      </div>
+      <div class="signup-image justify-content-center align-items-center d-flex">
+        <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
       </div>
     </div>
-  </div>
-  
-  <h1 class="title font-weight-bolder">Crie seu mangá Kindle em minutos com Manga Kindle Maker.</h1>
-  <form id="formManga" class="mb-3">
-    <div id="capaManga" style="padding-left: 5vw"></div>
-    <div id="autorManga" style="padding-left: 5vw"></div>
-    <div class="form-group mb-3" style="padding-left: 5vw">
-      <input type="text" class="form-control" name="nomeManga" id="nomeManga" aria-describedby="emailHelp"
-        placeholder="Nome do Mangá">
-    </div>
-    <div class="form-group mb-3" style="padding-left: 5vw">
-      <input type="text" class="form-control" name="manga" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Insira o link do capitulo">
-    </div>
-  </form>
-  <div id="switchsContainer">
-    <div class="form-check form-switch mb-3">
-      <input class="form-check-input" id="testando" type="checkbox" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Usar Capa</label>
-    </div>
-    <div class="form-check form-switch mb-3">
-      <input class="form-check-input" id="autor" type="checkbox" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Autor</label>
-    </div>
-  </div>
-  <div id="buttons">
-    <button onclick="criarManga()" type="button" class="btn btn-primary btn-block" id="enviar">Criar Mangá!</button>
-    <button onclick="adicionarCampo()" type="button" id="teste" class="btn btn-secondary btn-block">adicionar
-      capitulo</button>
   </div>
   <script src="js/neutralino.js"></script>
   <script src="js/main.js"></script>
