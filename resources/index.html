@@ -27,35 +27,35 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
 </head>
 
 <body>
-  <div class="container justify-content-center align-items-center d-flex" style="width: 100%;height: 100%;">
+  <div class="container justify-content-center align-items-center d-flex" style="width: 100vw;height: 100vh;">
     <div class="signup-content">
       <div class="signup-form">
         <h2 class="form-title">Enhance your mangá</h2>
-        <form method="POST" class="register-form" id="register-form">
+        <form method="POST" class="register-form" id="create-manga" >
           <div class="form-group">
-            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-            <input type="text" name="name" id="name" placeholder="Nome do mangá" />
+            <label for="name"><i class="zmdi zmdi-book"></i></label>
+            <input type="text" name="name" id="name" placeholder="Mangá name" />
           </div>
           <div class="form-group justify-content-between d-flex">
-            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-            <input type="password" name="pass" id="pass" placeholder="Cap. Inicial" style="width: 48%;">
-            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-            <input type="password" name="pass" id="pass" placeholder="Cap. Final" style="width: 48%;">
+            <label for="start"><i class="zmdi zmdi-bookmark-outline"></i></label>
+            <input type="number" name="start" id="start" placeholder="First chapter" style="width: 48%;">
+            <label for="end"><i class="zmdi zmdi-bookmark"></i></label>
+            <input type="number" name="end" id="end" placeholder="Last chapter" style="width: 48%;">
           </div>
           <div class="form-group">
-            <label for="email"><i class="zmdi zmdi-email"></i></label>
-            <input type="email" name="email" id="email" placeholder="Autor" />
+            <label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
+            <input type="text" name="author" id="author" placeholder="Author" />
           </div>
           <div class="form-group">
-            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-            <input type="password" name="re_pass" id="re_pass" placeholder="Capa do mangá" />
+            <label for="re-pass"><i class="zmdi zmdi-collection-image"></i></label>
+            <input type="text" name="cover" id="cover" placeholder="Mangá cover" />
           </div>
           <div class="form-group">
-            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-            <input type="password" name="re_pass" id="re_pass" placeholder="Nome da pasta" />
+            <label for="folder"><i class="zmdi zmdi-folder"></i></label>
+            <input type="text" name="folder" id="folder" placeholder="Folder name" />
           </div>
-          <div class="form-group form-button">
-            <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+          <div class="form-group form-button" id="signup-area" style="display:flex; justify-content:start; align-items:center;">
+            <input type="button" name="signup" id="signup" class="btn btn-primary btn-lg" style="font-size: 13px; padding: 15px; max-width: 50%;" value="Submit Mangá" onclick="FormCreateMangaHandler()"/>
           </div>
         </form>
       </div>

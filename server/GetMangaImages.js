@@ -2,9 +2,8 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const api = require("./api");
-const ComprimeImagens = require('./ComprimeImagens.js')
 
-async function getManga(manga, nomePasta, inicio = 1, fim = 1) {
+async function GetMangaImages(manga, nomePasta, inicio = 1, fim = 1) {
     let chaptersId = [];
     let images = [];
     let mangaId = "";
@@ -67,4 +66,4 @@ async function getManga(manga, nomePasta, inicio = 1, fim = 1) {
     return images;
 }
 
-module.exports = getManga;
+module.exports = GetMangaImages;

@@ -272,8 +272,11 @@ figure {
   margin-bottom: 50px;
   text-align: center; }
 
+.position-absolute {
+  position: absolute;
+}
+
 .form-submit {
-  display: inline-block;
   background: #6dabe4;
   color: #fff;
   border-bottom: none;
@@ -284,7 +287,6 @@ figure {
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
     background: #4292dc; }
