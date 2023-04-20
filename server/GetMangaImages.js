@@ -1,7 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
-const api = require("./api");
+const api = require("./MangaLivreApiHandler");
 
 async function GetMangaImages(manga, nomePasta, inicio = 1, fim = 1) {
     let chaptersId = [];

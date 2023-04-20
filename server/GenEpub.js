@@ -4,7 +4,7 @@ const Epub = require("epub-gen");
 const JSZip = require("jszip");
 const xml2js = require("xml2js");
 // Obter o caminho completo para a pasta de imagens e o arquivo de saída
-async function GeraEpub(totalImages,titulo, autor, diretorio, urlCover) {
+async function GenEpub(totalImages,titulo, autor, diretorio, urlCover) {
 
   const outputFile = `${titulo}.epub`;
   const imagesFolderPath = path.resolve(diretorio);
@@ -184,4 +184,4 @@ async function GeraEpub(totalImages,titulo, autor, diretorio, urlCover) {
 }
 
 
-module.exports = GeraEpub;
+module.exports = GenEpub;
