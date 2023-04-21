@@ -45,9 +45,9 @@
       "minWidth": 1000,
       "minHeight": 768,
       "fullScreen": false,
-      "alwaysOnTop": false,
+      "alwaysOnTop": true,
       "icon": "/resources/icons/comic.png",
-      "enableInspector": false,
+      "enableInspector": true,
       "borderless": false,
       "maximize": false,
       "hidden": false,
@@ -69,8 +69,8 @@
       ]
     },
     "chrome": {
-      "width": 800,
-      "height": 500,
+      "width": 1000,
+      "height": 768,
       "args": "--user-agent=\"Neutralinojs chrome mode\"",
       "nativeBlockList": [
         "filesystem.*",

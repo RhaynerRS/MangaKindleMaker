@@ -36,11 +36,15 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
             <label for="name"><i class="zmdi zmdi-book"></i></label>
             <input type="text" name="name" id="name" placeholder="Mangá name" />
           </div>
-          <div class="form-group justify-content-between d-flex">
-            <label for="start"><i class="zmdi zmdi-bookmark-outline"></i></label>
-            <input type="number" name="start" id="start" placeholder="First chapter" style="width: 48%;">
-            <label for="end"><i class="zmdi zmdi-bookmark"></i></label>
-            <input type="number" name="end" id="end" placeholder="Last chapter" style="width: 48%;">
+          <div style="width: 85%; display: flex; justify-content: space-between;">
+            <div class="form-group " style="width: 48%">
+              <label for="start"><i class="zmdi zmdi-bookmark-outline"></i></label>
+              <input type="number" name="start" id="start" placeholder="First chapter">
+            </div>
+            <div class="form-group " style="width: 48%">
+              <label for="end"><i class="zmdi zmdi-bookmark"></i></label>
+              <input type="number" name="end" id="end" placeholder="Last chapter">
+            </div>
           </div>
           <div class="form-group">
             <label for="author"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -60,7 +64,7 @@ https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js
         </form>
       </div>
       <div class="signup-image justify-content-center align-items-center d-flex">
-        <figure style="margin-bottom: 0"><img src="images/signup-image.jpg" alt="sing up image" id="signupImage" style="width:75%"></figure>
+        <figure style="margin-bottom: 0; display: contents;"><img src="images/signup-image.jpg" alt="sing up image" id="signupImage" style="width:30vw"></figure>
       </div>
     </div>
   </div>

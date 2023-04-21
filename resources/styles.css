@@ -5,6 +5,41 @@ body {
   height: 100vh;
   width: 100vw;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.signup-content{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-form{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signup-image{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 60vh;
 }
 
 .title {
@@ -20,6 +55,32 @@ body {
     Helvetica Neue, Helvetica, Arial, sans-serif;
   position: absolute;
   top: 60px;
+}
+
+.form-group{
+  width: 85%;
+  border-bottom: black 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+i{
+  margin-left: 5px;
+}
+
+.form-button{
+  border-bottom: none;
+}
+
+.form-group input{
+  padding: 10px;
+  width: 100%;
+  border: none;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
 
 #enviar {
