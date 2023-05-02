@@ -1,89 +1,43 @@
 {
-  "$schema": "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
-  "applicationId": "js.neutralino.sample",
+  "applicationId": "js.neutralino.zero",
   "version": "1.0.0",
   "defaultMode": "window",
-  "port": 0,
-  "documentRoot": "/resources/",
+  "documentRoot": "/react-src/build/",
   "url": "/",
   "enableServer": true,
   "enableNativeAPI": true,
-  "tokenSecurity": "one-time",
-  "logging": {
-    "enabled": true,
-    "writeToLogFile": true
-  },
   "nativeAllowList": [
     "app.*",
-    "os.*",
-    "filesystem.*",
-    "window.*",
-    "debug.log"
+    "filesystem.readDirectory"
   ],
-  "globalVariables": {
-    "TEST1": "Hello",
-    "TEST2": [
-      2,
-      4,
-      5
-    ],
-    "TEST3": {
-      "value1": 10,
-      "value2": {}
-    }
-  },
-  "permissions": {
-    "window": {
-      "*": true
-    }
-  },
   "modes": {
     "window": {
-      "title": "Manga Kindle Maker",
-      "width": 1000,
-      "height": 768,
-      "minWidth": 1000,
-      "minHeight": 768,
+      "title": "MangaHarvest",
+      "width": 900,
+      "height": 668,
+      "minWidth": 900,
+      "minHeight": 668,
       "fullScreen": false,
-      "alwaysOnTop": true,
-      "icon": "/resources/icons/comic.png",
+      "alwaysOnTop": false,
+      "icon": "./comic.png",
       "enableInspector": true,
       "borderless": false,
       "maximize": false,
       "hidden": false,
       "resizable": false,
       "exitProcessOnClose": true
-    },
-    "browser": {
-      "globalVariables": {
-        "TEST": "Test value browser"
-      },
-      "nativeBlockList": [
-        "filesystem.*"
-      ]
-    },
-    "cloud": {
-      "url": "/resources/#cloud",
-      "nativeAllowList": [
-        "app.*"
-      ]
-    },
-    "chrome": {
-      "width": 1000,
-      "height": 768,
-      "args": "--user-agent=\"Neutralinojs chrome mode\"",
-      "nativeBlockList": [
-        "filesystem.*",
-        "os.*"
-      ]
     }
   },
   "cli": {
-    "binaryName": "MangaKindleMaker",
-    "resourcesPath": "/resources/",
+    "binaryName": "MangaKindleMaker-react",
     "extensionsPath": "/extensions/",
-    "clientLibrary": "/resources/js/neutralino.js",
+    "resourcesPath": "/react-src/build/",
+    "clientLibrary": "/react-src/public/__neutralino_globals.js",
     "binaryVersion": "4.10.0",
-    "clientVersion": "3.8.2"
+    "clientVersion": "3.8.2",
+    "frontendLibrary": {
+      "patchFile": "/react-src/public/index.html",
+      "devUrl": "http://localhost:3000"
+    }
   }
 }

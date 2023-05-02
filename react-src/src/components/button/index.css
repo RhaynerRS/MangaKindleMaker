@@ -1,0 +1,13 @@
+.btn{
+    box-shadow: -2px -2px 5px #dcaaff, 2px 2px 5px #7b3bad;
+    border-radius: 40px;
+    font-size: 12px;
+    border: none;
+    width: 60%;
+    text-transform: uppercase;
+    padding: 15px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #d08dff;
+}
+

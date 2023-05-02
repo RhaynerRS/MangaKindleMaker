@@ -1,0 +1,44 @@
+.form-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    color: #222;
+}
+
+.form-group .input-form {
+  width: 95%;
+  display: block;
+  border: none;
+  padding-block: 10px;
+  padding-left: 33px;
+  border-radius: 56px !important;
+  box-sizing: border-box;
+  background-color: #f0f0f3;
+  box-shadow: inset -2px -2px 5px #fff,inset 2px 2px 5px #bec8e4;
+
+}
+
+textarea:focus,
+input:focus,select:focus, div:focus {
+  outline: none;
+}

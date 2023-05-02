@@ -1,17 +1,39 @@
-# neutralinojs-minimal
+# neutralinojs-react
+A simple React.js template for building Neutralinojs apps
 
-The default template for a Neutralinojs app. It's possible to use your favorite frontend framework by using [these steps](https://neutralino.js.org/docs/how-to/use-a-frontend-library).
+## How to install
 
-## Contributors
+Create a new Neutralinojs project with this template.
 
-<a href="https://github.com/neutralinojs/neutralinojs-minimal/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=neutralinojs/neutralinojs-minimal" />
-</a>
+```
+neu create myapp --template codezri/neutralinojs-react
+```
+
+## How to develop
+
+Install React.js app's dependencies
+
+```
+cd myapp-react
+npm i
+```
+
+Start the development server
+
+```
+cd react-src
+npm start
+```
+
+Start the Neutralinojs app
+
+```
+cd ..
+neu run --frontend-lib-dev
+```
+
+Hot reloading will work, happy coding...
 
 ## License
 
 [MIT](LICENSE)
-
-## Icon credits
-
-- `trayIcon.png` - Made by [Freepik](https://www.freepik.com) and downloaded from [Flaticon](https://www.flaticon.com)
