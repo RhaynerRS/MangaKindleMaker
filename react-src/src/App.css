@@ -21,7 +21,6 @@ body{
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: calc( 100% + 150px ) calc( 100% + 200px );
-
 }
 .App-logo {
   height: 40vmin;
